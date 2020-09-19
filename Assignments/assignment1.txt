@@ -1,0 +1,88 @@
+MUMT301-2020 Assignment 1
+QUESTIONNAIRE!
+
+The following questionnaire seeks to understand your previous knowledge about some of the concepts that we will learn in class during the coming term.
+
+1. Do you know any programming languages? If you do, which ones?
+A: Yes. Javascript, Java, Python and a little C.
+
+2. What is your primary computer operating system (OS)?
+A: MacOS.
+
+3. Do you own a smartphone, tablet, or mobile device? What is your favourite OS for mobile devices?
+A: Yes. IOS. It's clear and easy to use.
+
+4. Do you use any social networking services? If you do, which ones? Why?
+A: Yes. Instagram, Facebook, and some chinese social networking services such as Wechat, Weibo, etc. These services really connect people together. I can meet a lot of people and see a lot of different things that I may not able to meet or see in the real life.
+
+5. Expand the following acronyms and do research about their meaning. You may look them up if you don't know:
+
+    HTTP: HyperText Transfer Protocol
+    REST: Representational State Transfer 
+    API: Application Programming Interface
+
+6. Do you play a musical instrument or sing? If so, how much experience do you have?
+A: I play the guitar and a chinese traditional instrument: Zheng. Both are about the amateur level.
+
+7. Can you read music notation? If so, how well?
+A: Yes, but not very skilled.
+
+8. How large is your personal music collection? Estimate the number of artists, albums, and songs. If instead you listen to music using streaming services, how many playlists, artists, albums, and songs do you have in your account?
+A: I use streaming service. About hundreds artists and thousands of songs.
+
+9. How do you search and find new music?
+A: Using streaming music providers such as Spotify or using search engines such as Google.
+
+10. Implement a script in your favourite programming language that takes numbers as its input until it receives the command "done." When it reads "done," print out the average of all the numbers that were input.
+
+If you don't know a programming language, write out all the steps you would need to accomplish the same task.
+
+Example: if we were writing a piece of software that took ingredients of a recipe and then, when it received the word "end" it printed the ingredients out, our steps might look like this:
+
+    1. Input ingredients
+    2. If input is not "end" add the ingredient to the ingredient list
+    3. Go to step 1.
+    4. If input is "end" print each ingredient in the ingredient list,
+    5. Exit.
+A: Java 
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class AverageOfInput{
+  public static void main(String[] args){
+    Scanner scan=new Scanner(System.in);
+    ArrayList<String> input=new ArrayList<String>();
+    int cum=0;
+    while(scan.hasNext()){
+      String str1=scan.next();
+      if(str1.equals("done")){
+        scan.close();
+        for(String i : input){
+          cum=cum+Integer.parseInt(i);
+        }
+        break;
+      }else{
+        input.add(str1);
+      }
+    }
+    if(input.size()!=0){
+      float average= cum/input.size();
+      System.out.println(average);
+    }else{
+      System.out.println("Please at least input a number");
+    }
+  }
+}
+
+11. What is Git?
+A: Git is a distributed version control system.
+
+12. What is GitHub? Do you have an account? If you do not, create one. Provide your username.
+A: GitHub is a git repository hosting service. Yes, I have the account. The username is JaneShaosyx.
+
+13. Are you aware of any ways in which artists are dealing with public performances post-COVID? Do you think live performances are essential to your musical experience?
+A: Using online live performances. I personally not a big fan of live performances. I always love the recorded versions more than the live ones. 
+
+14. Name two musical artists that you like. What do you find interesting about their music that makes you like them?
+A: Bruno Mars and Coldplay band. They are both very talented and have a very good live performance skill. Their songs are great in both production and musical content. 
