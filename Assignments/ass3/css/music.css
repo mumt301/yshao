@@ -1,0 +1,50 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#nav {
+    min-width: 31.25rem;
+    max-width: 100%;
+    height: 3.125rem;
+    line-height: 3.125rem;
+    background-color: #fff;
+    box-shadow: 3px 3px 5px #999;
+}
+
+#header {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+#logo-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+
+#nav-list {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 3rem;
+    width: 90%;
+}
+
+.nav-header {
+    display: inline;
+    font-size: 1.2rem;
+    font-family: serif;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+.stream-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 3rem auto;
+}
