@@ -1,6 +1,7 @@
 body {
     padding: 0;
     margin: 0;
+    min-width: 31.25rem;
 }
 
 #nav {
