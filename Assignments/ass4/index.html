@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment4</title>
+</head>
+
+<body onLoad="displayTable();">
+    <div class="header" style="text-align:center">
+        <h1>Comparison of compression algorithms</h1>
+        <table border="1" id='table'>
+            <tr>
+                <th>Filename</th>
+                <th>Compression algorithm</th>
+                <th>Bit-rate</th>
+                <th>Original size</th>
+                <th>Compressed size</th>
+                <th>Compression ratio</th>
+                <th>Link to original audio</th>
+                <th>Link to compressed audio</th>
+                <th>Link to residual audio</th>
+            </tr>
+    </div>
+    <script>
+        let file = [
+            // s1-mp3-1
+            {
+                filename: 'Song1',
+                comAlg: 'MP3',
+                bitRate: '96kbps',
+                originalSize: '21709KB',
+                comSize: '729KB',
+                comRatio: '0.034',
+                linkOri: '<a href="./Song1/Song1.wav">Original audio</a>',
+                linkCom: '<a href="./Song1/Song1_96kbps_mp3.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song1/Song1_96kbps_mp3_residual.wav">Residual audio</a>'
+            },
+            // s1-mp3-2
+            {
+                filename: 'Song1',
+                comAlg: 'MP3',
+                bitRate: '128kbps',
+                originalSize: '21709KB',
+                comSize: '969KB',
+                comRatio: '0.045',
+                linkOri: '<a href="./Song1/Song1.wav">Original audio</a>',
+                linkCom: '<a href="./Song1/Song1_128kbps_mp3.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song1/Song1_128kbps_mp3_residual.wav">Residual audio</a>'
+            },
+            // s1-mp3-3
+            {
+                filename: 'Song1',
+                comAlg: 'MP3',
+                bitRate: '192kbps',
+                originalSize: '21709KB',
+                comSize: '1536KB',
+                comRatio: '0.071',
+                linkOri: '<a href="./Song1/Song1.wav">Original audio</a>',
+                linkCom: '<a href="./Song1/Song1_192kbps_mp3.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song1/Song1_192kbps_mp3_residual.wav">Residual audio</a>'
+            },
+            // s1-mp3-4
+            {
+                filename: 'Song1',
+                comAlg: 'MP3',
+                bitRate: '320kbps',
+                originalSize: '21709KB',
+                comSize: '2458KB',
+                comRatio: '0.11',
+                linkOri: '<a href="./Song1/Song1.wav">Original audio</a>',
+                linkCom: '<a href="./Song1/Song1_320kbps_mp3.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song1/Song1_320kbps_mp3_residual.wav">Residual audio</a>'
+            },
+            // s1-mp2-1
+            {
+                filename: 'Song1',
+                comAlg: 'MP2',
+                bitRate: '96kbps',
+                originalSize: '21709KB',
+                comSize: '720KB',
+                comRatio: '0.033',
+                linkOri: '<a href="./Song1/Song1.wav">Original audio</a>',
+                linkCom: '<a href="./Song1/Song1_96kbps_mp2.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song1/Song1_96kbps_mp2_residual.wav">Residual audio</a>'
+            },
+            // s1-mp2-2
+            {
+                filename: 'Song1',
+                comAlg: 'MP2',
+                bitRate: '128kbps',
+                originalSize: '21709KB',
+                comSize: '959KB',
+                comRatio: '0.044',
+                linkOri: '<a href="./Song1/Song1.wav">Original audio</a>',
+                linkCom: '<a href="./Song1/Song1_128kbps_mp2.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song1/Song1_128kbps_mp2_residual.wav">Residual audio</a>'
+            },
+            // s1-mp2-3
+            {
+                filename: 'Song1',
+                comAlg: 'MP2',
+                bitRate: '192kbps',
+                originalSize: '21709KB',
+                comSize: '1434KB',
+                comRatio: '0.066',
+                linkOri: '<a href="./Song1/Song1.wav">Original audio</a>',
+                linkCom: '<a href="./Song1/Song1_192kbps_mp2.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song1/Song1_192kbps_mp2_residual.wav">Residual audio</a>'
+            },
+            // s1-mp2-4
+            {
+                filename: 'Song1',
+                comAlg: 'MP2',
+                bitRate: '320kbps',
+                originalSize: '21709KB',
+                comSize: '2458KB',
+                comRatio: '0.11',
+                linkOri: '<a href="./Song1/Song1.wav">Original audio</a>',
+                linkCom: '<a href="./Song1/Song1_320kbps_mp2.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song1/Song1_320kbps_mp2_residual.wav">Residual audio</a>'
+            },
+            // s1-aac-1
+            {
+                filename: 'Song1',
+                comAlg: 'AAC',
+                bitRate: '96kbps',
+                originalSize: '21709KB',
+                comSize: '741KB',
+                comRatio: '0.034',
+                linkOri: '<a href="./Song1/Song1.wav">Original audio</a>',
+                linkCom: '<a href="./Song1/Song1_96kbps_aac.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song1/Song1_96kbps_aac_residual.wav">Residual audio</a>'
+            },
+            // s1-aac-2
+            {
+                filename: 'Song1',
+                comAlg: 'AAC',
+                bitRate: '128kbps',
+                originalSize: '21709KB',
+                comSize: '981KB',
+                comRatio: '0.045',
+                linkOri: '<a href="./Song1/Song1.wav">Original audio</a>',
+                linkCom: '<a href="./Song1/Song1_128kbps_aac.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song1/Song1_128kbps_aac_residual.wav">Residual audio</a>'
+            },
+            // s1-aac-3
+            {
+                filename: 'Song1',
+                comAlg: 'AAC',
+                bitRate: '192kbps',
+                originalSize: '21709KB',
+                comSize: '1536KB',
+                comRatio: '0.071',
+                linkOri: '<a href="./Song1/Song1.wav">Original audio</a>',
+                linkCom: '<a href="./Song1/Song1_192kbps_aac.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song1/Song1_192kbps_aac_residual.wav">Residual audio</a>'
+            },
+            // s1-aac-4
+            {
+                filename: 'Song1',
+                comAlg: 'AAC',
+                bitRate: '320kbps',
+                originalSize: '21709KB',
+                comSize: '2458KB',
+                comRatio: '0.11',
+                linkOri: '<a href="./Song1/Song1.wav">Original audio</a>',
+                linkCom: '<a href="./Song1/Song1_320kbps_aac.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song1/Song1_320kbps_aac_residual.wav">Residual audio</a>'
+            },
+            // s1-ogg-1
+            {
+                filename: 'Song1',
+                comAlg: 'OGG',
+                bitRate: 'low',
+                originalSize: '21709KB',
+                comSize: '798KB',
+                comRatio: '0.037',
+                linkOri: '<a href="./Song1/Song1.wav">Original audio</a>',
+                linkCom: '<a href="./Song1/Song1_low_ogg.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song1/Song1_low_ogg_residual.wav">Residual audio</a>'
+            },
+            // s1-ogg-2
+            {
+                filename: 'Song1',
+                comAlg: 'OGG',
+                bitRate: 'low-mid',
+                originalSize: '21709KB',
+                comSize: '1331KB',
+                comRatio: '0.061',
+                linkOri: '<a href="./Song1/Song1.wav">Original audio</a>',
+                linkCom: '<a href="./Song1/Song1_low-mid_ogg.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song1/Song1_low-mid_ogg_residual.wav">Residual audio</a>'
+            },
+            // s1-ogg-3
+            {
+                filename: 'Song1',
+                comAlg: 'OGG',
+                bitRate: 'high-mid',
+                originalSize: '21709KB',
+                comSize: '2048KB',
+                comRatio: '0.094',
+                linkOri: '<a href="./Song1/Song1.wav">Original audio</a>',
+                linkCom: '<a href="./Song1/Song1_high-mid_ogg.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song1/Song1_high-mid_ogg_residual.wav">Residual audio</a>'
+            },
+            // s1-ogg-4
+            {
+                filename: 'Song1',
+                comAlg: 'OGG',
+                bitRate: 'high',
+                originalSize: '21709KB',
+                comSize: '3789KB',
+                comRatio: '0.17',
+                linkOri: '<a href="./Song1/Song1.wav">Original audio</a>',
+                linkCom: '<a href="./Song1/Song1_high_ogg.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song1/Song1_high_ogg_residual.wav">Residual audio</a>'
+            },
+            // s2-mp3-1
+            {
+                filename: 'Song2',
+                comAlg: 'MP3',
+                bitRate: '96kbps',
+                originalSize: '21709KB',
+                comSize: '729KB',
+                comRatio: '0.034',
+                linkOri: '<a href="./Song2/Song2.wav">Original audio</a>',
+                linkCom: '<a href="./Song2/Song2_96kbps_mp3.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song2/Song2_96kbps_mp3_residual.wav">Residual audio</a>'
+            },
+            // s2-mp3-2
+            {
+                filename: 'Song2',
+                comAlg: 'MP3',
+                bitRate: '128kbps',
+                originalSize: '21709KB',
+                comSize: '968KB',
+                comRatio: '0.045',
+                linkOri: '<a href="./Song2/Song2.wav">Original audio</a>',
+                linkCom: '<a href="./Song2/Song2_128kbps_mp3.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song2/Song2_128kbps_mp3_residual.wav">Residual audio</a>'
+            },
+            // s2-mp3-3
+            {
+                filename: 'Song2',
+                comAlg: 'MP3',
+                bitRate: '192kbps',
+                originalSize: '21709KB',
+                comSize: '1437KB',
+                comRatio: '0.066',
+                linkOri: '<a href="./Song2/Song2.wav">Original audio</a>',
+                linkCom: '<a href="./Song2/Song2_192kbps_mp3.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song2/Song2_192kbps_mp3_residual.wav">Residual audio</a>'
+            },
+            // s2-mp3-4
+            {
+                filename: 'Song2',
+                comAlg: 'MP3',
+                bitRate: '320kbps',
+                originalSize: '21709KB',
+                comSize: '2458KB',
+                comRatio: '0.11',
+                linkOri: '<a href="./Song2/Song2.wav">Original audio</a>',
+                linkCom: '<a href="./Song2/Song2_320kbps_mp3.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song2/Song2_320kbps_mp3_residual.wav">Residual audio</a>'
+            },
+            // s2-mp2-1
+            {
+                filename: 'Song2',
+                comAlg: 'MP2',
+                bitRate: '96kbps',
+                originalSize: '21709KB',
+                comSize: '720KB',
+                comRatio: '0.033',
+                linkOri: '<a href="./Song2/Song2.wav">Original audio</a>',
+                linkCom: '<a href="./Song2/Song2_96kbps_mp2.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song2/Song2_96kbps_mp2_residual.wav">Residual audio</a>'
+            },
+            // s2-mp2-2
+            {
+                filename: 'Song2',
+                comAlg: 'MP2',
+                bitRate: '128kbps',
+                originalSize: '21709KB',
+                comSize: '959KB',
+                comRatio: '0.044',
+                linkOri: '<a href="./Song2/Song2.wav">Original audio</a>',
+                linkCom: '<a href="./Song2/Song2_128kbps_mp2.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song2/Song2_128kbps_mp2_residual.wav">Residual audio</a>'
+            },
+            // s2-mp2-3
+            {
+                filename: 'Song2',
+                comAlg: 'MP2',
+                bitRate: '192kbps',
+                originalSize: '21709KB',
+                comSize: '1434KB',
+                comRatio: '0.066',
+                linkOri: '<a href="./Song2/Song2.wav">Original audio</a>',
+                linkCom: '<a href="./Song2/Song2_192kbps_mp2.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song2/Song2_192kbps_mp2_residual.wav">Residual audio</a>'
+            },
+            // s2-mp2-4
+            {
+                filename: 'Song2',
+                comAlg: 'MP2',
+                bitRate: '320kbps',
+                originalSize: '21709KB',
+                comSize: '2458KB',
+                comRatio: '0.11',
+                linkOri: '<a href="./Song2/Song2.wav">Original audio</a>',
+                linkCom: '<a href="./Song2/Song2_320kbps_mp2.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song2/Song2_320kbps_mp2_residual.wav">Residual audio</a>'
+            },
+            // s2-aac-1
+            {
+                filename: 'Song2',
+                comAlg: 'AAC',
+                bitRate: '96kbps',
+                originalSize: '21709KB',
+                comSize: '740KB',
+                comRatio: '0.034',
+                linkOri: '<a href="./Song2/Song2.wav">Original audio</a>',
+                linkCom: '<a href="./Song2/Song2_96kbps_aac.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song2/Song2_96kbps_aac_residual.wav">Residual audio</a>'
+            },
+            // s2-aac-2
+            {
+                filename: 'Song2',
+                comAlg: 'AAC',
+                bitRate: '128kbps',
+                originalSize: '21709KB',
+                comSize: '980KB',
+                comRatio: '0.045',
+                linkOri: '<a href="./Song2/Song2.wav">Original audio</a>',
+                linkCom: '<a href="./Song2/Song2_128kbps_aac.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song2/Song2_128kbps_aac_residual.wav">Residual audio</a>'
+            },
+            // s2-aac-3
+            {
+                filename: 'Song2',
+                comAlg: 'AAC',
+                bitRate: '192kbps',
+                originalSize: '21709KB',
+                comSize: '1536KB',
+                comRatio: '0.071',
+                linkOri: '<a href="./Song2/Song2.wav">Original audio</a>',
+                linkCom: '<a href="./Song2/Song2_192kbps_aac.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song2/Song2_192kbps_aac_residual.wav">Residual audio</a>'
+            },
+            // s2-aac-4
+            {
+                filename: 'Song2',
+                comAlg: 'AAC',
+                bitRate: '320kbps',
+                originalSize: '21709KB',
+                comSize: '2458KB',
+                comRatio: '0.11',
+                linkOri: '<a href="./Song2/Song2.wav">Original audio</a>',
+                linkCom: '<a href="./Song2/Song2_320kbps_aac.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song2/Song2_320kbps_aac_residual.wav">Residual audio</a>'
+            },
+            // s2-ogg-1
+            {
+                filename: 'Song2',
+                comAlg: 'OGG',
+                bitRate: 'low',
+                originalSize: '21709KB',
+                comSize: '625KB',
+                comRatio: '0.029',
+                linkOri: '<a href="./Song2/Song2.wav">Original audio</a>',
+                linkCom: '<a href="./Song2/Song2_low_ogg.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song2/Song2_low_ogg_residual.wav">Residual audio</a>'
+            },
+            // s2-ogg-2
+            {
+                filename: 'Song2',
+                comAlg: 'OGG',
+                bitRate: 'low-mid',
+                originalSize: '21709KB',
+                comSize: '994KB',
+                comRatio: '0.046',
+                linkOri: '<a href="./Song2/Song2.wav">Original audio</a>',
+                linkCom: '<a href="./Song2/Song2_low-mid_ogg.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song2/Song2_low-mid_ogg_residual.wav">Residual audio</a>'
+            },
+            // s2-ogg-3
+            {
+                filename: 'Song2',
+                comAlg: 'OGG',
+                bitRate: 'high-mid',
+                originalSize: '21709KB',
+                comSize: '1434KB',
+                comRatio: '0.066',
+                linkOri: '<a href="./Song2/Song2.wav">Original audio</a>',
+                linkCom: '<a href="./Song2/Song2_high-mid_ogg.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song2/Song2_high-mid_ogg_residual.wav">Residual audio</a>'
+            },
+            // s2-ogg-4
+            {
+                filename: 'Song2',
+                comAlg: 'OGG',
+                bitRate: 'high',
+                originalSize: '21709KB',
+                comSize: '2970KB',
+                comRatio: '0.14',
+                linkOri: '<a href="./Song2/Song2.wav">Original audio</a>',
+                linkCom: '<a href="./Song2/Song2_high_ogg.wav">Compressed audio</a>',
+                linkRes: '<a href="./Song2/Song2_high_ogg_residual.wav">Residual audio</a>'
+            },
+
+        ]
+        function displayTable() {
+            let table = document.getElementById('table');
+            console.log(table);
+            let d = document.createDocumentFragment();
+            for (row of file) {
+                tr = document.createElement('tr');
+                for (value in row) {
+                    td = document.createElement('td');
+                    tr.appendChild(td);
+                    td.innerHTML = row[value];
+                }
+                d.appendChild(tr);
+            }
+            table.appendChild(d);
+        }
+    </script>
+</body>
+
+</html>
