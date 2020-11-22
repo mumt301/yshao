@@ -1,5 +1,5 @@
 const apiKey = "107d472aac457bf5f9f2d27cbe690d2e";
-const baseUrl = "http://ws.audioscrobbler.com/2.0/";
+const baseUrl = "https://ws.audioscrobbler.com/2.0/";
 
 function querySimilar(event) {
   event.preventDefault();
