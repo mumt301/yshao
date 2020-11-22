@@ -59,8 +59,14 @@ function getInfo(xhttp) {
   let retrievedData2 = xhttp.response;
   let track = retrievedData2.track.name;
   let artist = retrievedData2.track.artist.name;
-  let imgUrl = retrievedData2.track.album.image[2]["#text"];
-  let description = retrievedData2.track.wiki.content;
+  let imgUrl = "";
+  if (retrievedData2.track.hasOwnProperty("album")) {
+    imgUrl = retrievedData2.track.album.image[2]["#text"];
+  }
+  let description = "N/A";
+  if (retrievedData2.track.hasOwnProperty("wiki")) {
+    description = retrievedData2.track.wiki.content;
+  }
   let table = document.getElementById("recTrack");
   let tr = document.createElement("tr");
   let td_1 = document.createElement("td");
@@ -72,6 +78,9 @@ function getInfo(xhttp) {
   td_2.innerHTML = artist;
   td_3.innerHTML = description;
   img.src = imgUrl;
+  if (imgUrl == "") {
+    img.alt = "Sorry no image for this track.";
+  }
   td_4.appendChild(img);
   tr.appendChild(td_1);
   tr.appendChild(td_2);
