@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://minicss.org/flavorFiles/mini-default.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment7</title>
+  </head>
+  <body>
+    <h1>Type the nanme of an track and its artist</h1>
+    <form id="rec">
+      <label for="track">Track name:</label>
+      <input type="text" name="trackName" id="track" />
+      <br />
+      <label for="artist">Artist name:</label>
+      <input type="text" name="artistName" id="artist" />
+      <br />
+      <input type="submit" />
+    </form>
+    <table id="recTrack" style="max-height:100%">
+      <tr>
+        <th>TrackName</th>
+        <th>ArtistName</th>
+        <th>Description</th>
+        <th>Image</th>
+      </tr>
+    </table>
+    <script type="text/JavaScript" src="./callback.js"></script>
+  </body>
+</html>
